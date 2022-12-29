@@ -9,8 +9,9 @@ const MessageSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'Member', required: true },
 });
 
+// Might add catalog routing; will need to change URL path if so
 MessageSchema.virtual('url').get(function() {
-  return `/members/${this._id}`;
+  return `/messages/${this._id}`;
 });
 
 MessageSchema.virtual('date_formatted').get(function() {

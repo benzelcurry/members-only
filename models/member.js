@@ -9,4 +9,9 @@ const MemberSchema = new Schema({
   membership_status: { type: Boolean, required: false },
 });
 
+// Might add catalog routing; will need to change URL path if so
+MemberSchema.virtual('url').get(function() {
+  return `/members/${this._id}`;
+});
+
 module.exports = mongoose.model('Member', MemberSchema);
