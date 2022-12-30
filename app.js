@@ -28,4 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => res.render('./views/index'));
 
+app.get('/sign-up', (req, res) => res.render('./views/sign-up'));
+
 app.listen(3000, () => console.log('App listening on Port 3000!'));

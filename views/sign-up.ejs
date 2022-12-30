@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members Only</title>
+</head>
+<body>
+  <header>
+    <%- include('../partials/header') %> 
+  </header>
+
+  <main>
+    <h1>Sign-Up Form</h1>
+    <form action="" method="POST">
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name" placeholder="First Name">
+
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Username">
+
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password">
+
+      <label for="password_verify">Verify Password</label>
+      <input type="password" name="verify_password" id="verify_password" placeholder="Password">
+
+      <fieldset>
+        <legend>Membership Status:</legend>
+
+        <div>
+          <input type="radio" name="membership" id="true" value="true">
+          <label for="true">Member</label>
+        </div>
+
+        <div>
+          <input type="radio" name="membership" id="false" value="false">
+          <label for="false">Not A Member</label>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer') %> 
+  </footer>
+</body>
+</html>
