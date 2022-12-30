@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const async = require('async');
 const { body, check, validationResult } = require('express-validator');
 
 require('dotenv').config();
@@ -32,26 +33,42 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 const create_user = [
-  // check('password').exists(),
-  // check(
-  //   'confirm_password',
-  //   'Password confirmation field must have the same value as the password field'
-  // )
-  //   .exists()
-  //   .custom((value, { req }) => value === req.body.password),
+  body('first_name', 'First name field must not be empty')
+    .trim()
+    .isLength({ min: 1 }),
+  body('family_name', 'Family name field must not be empty')
+    .trim()
+    .isLength({ min: 1 }),
+  body('username')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Username field must not be empty')
+    .isAlphanumeric()
+    .withMessage('Only alphanumeric characters are permitted for usernames'),
+  body('password', 'Password field must not be empty')
+    .trim()
+    .isLength({ min: 1 }),
+  body('confirm_password')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Password confirmation field must not be empty')
+    .custom((value, { req }) => value === req.body.password)
+    .withMessage('Passwords must match'),
 
   // Process request after validation
   (req, res, next) => {
-    if (req.body.password !== req.body.confirm_password) {
-      const message = "Passwords don't match";
-      res.render('./views/sign-up', {
-        resub: true,
-        first_name: req.body.first_name,
-        family_name: req.body.family_name,
-        username: req.body.username,
-        error: message,
-      })
-    }
+    const errors = validationResult(req);
+
+    // if (req.body.password !== req.body.confirm_password) {
+    //   const message = "Passwords don't match";
+    //   res.render('./views/sign-up', {
+    //     resub: true,
+    //     first_name: req.body.first_name,
+    //     family_name: req.body.family_name,
+    //     username: req.body.username,
+    //     error: message,
+    //   })
+    // }
 
     const member = new Member({
       first_name: req.body.first_name,
@@ -60,6 +77,17 @@ const create_user = [
       password: req.body.password,
       membership_status: false,
     });
+
+    if (!errors.isEmpty()) {
+      res.render('./views/sign-up', {
+        resub: true,
+        first_name: req.body.first_name,
+        family_name: req.body.family_name,
+        username: req.body.username,
+        errors: errors.array(),
+      });
+      return;
+    }
 
     member.save((err) => {
       if (err) {

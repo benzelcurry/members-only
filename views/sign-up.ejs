@@ -65,9 +65,13 @@
       <button>Submit</button>
     </form>
 
-    <p class="error">
-      <%= typeof error != 'undefined' ? error : '' %>
-    </p>
+    <% if (typeof errors !== 'undefined') { %>
+      <ul class="errors">
+        <% for (let i = 0; i < errors.length; i++) { %>
+          <li> <%= errors[i].msg %> </li>
+        <% } %> 
+      </ul>
+    <% } %> 
   </main>
 
   <footer>
