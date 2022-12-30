@@ -26,6 +26,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.send('<h1>Members Only</h1>'));
+app.get('/', (req, res) => res.render('./views/index'));
 
 app.listen(3000, () => console.log('App listening on Port 3000!'));
