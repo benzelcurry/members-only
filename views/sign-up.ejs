@@ -26,10 +26,10 @@
       <label for="password">Password</label>
       <input type="password" name="password" id="password" placeholder="Password">
 
-      <label for="password_verify">Verify Password</label>
-      <input type="password" name="verify_password" id="verify_password" placeholder="Password">
+      <label for="password_confirm">Confirm Password</label>
+      <input type="password" name="confirm_password" id="confirm_password" placeholder="Password">
 
-      <fieldset>
+      <fieldset style="display:none">
         <legend>Membership Status:</legend>
 
         <div>
@@ -38,7 +38,7 @@
         </div>
 
         <div>
-          <input type="radio" name="membership" id="false" value="false">
+          <input type="radio" name="membership" id="false" value="false" checked>
           <label for="false">Not A Member</label>
         </div>
       </fieldset>
