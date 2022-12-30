@@ -1,0 +1,38 @@
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: solid 2px black;
+  border-radius: 5px;
+  width: 400px;
+  padding: 20px;
+}
+
+input[type='password'],
+input[type='text'] {
+  width: 200px;
+  height: 25px;
+  font-size: 14px;
+}
+
+.field {
+  display: flex;
+  align-items: flex-end;
+  width: 400px;
+  gap: 10px;
+}
+
+.underline {
+  align-self: start;
+  border-bottom: 1px dotted grey;
+  display: flex;
+  flex-grow: 1;
+  margin-top: 31px;
+  overflow: hidden;
+}
+
+/* label {
+  width: 120px;
+} */

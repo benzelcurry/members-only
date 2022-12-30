@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../stylesheets/sign-up.css">
   <title>Members Only</title>
 </head>
 <body>
@@ -13,21 +14,36 @@
 
   <main>
     <h1>Sign-Up Form</h1>
-    <form action="" method="POST">
-      <label for="first_name">First Name</label>
-      <input type="text" name="first_name" id="first_name" placeholder="First Name">
+    <form class="sign-up" action="" method="POST">
+      <div class="field">
+        <label for="first_name">First Name</label>
+        <span class="underline"></span>
+        <input type="text" name="first_name" id="first_name" placeholder="First Name">
+      </div>
 
-      <label for="last_name">Last Name</label>
-      <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+      <div class="field">
+        <label for="last_name">Last Name</label>
+        <span class="underline"></span>
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+      </div>
 
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" placeholder="Username">
+      <div class="field">
+        <label for="username">Username</label>
+        <span class="underline"></span>
+        <input type="text" name="username" id="username" placeholder="Username">
+      </div>
 
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" placeholder="Password">
+      <div class="field">
+        <label for="password">Password</label>
+        <span class="underline"></span>
+        <input type="password" name="password" id="password" placeholder="Password">
+      </div>
 
-      <label for="password_confirm">Confirm Password</label>
-      <input type="password" name="confirm_password" id="confirm_password" placeholder="Password">
+      <div class="field">
+        <label for="password_confirm">Confirm Password</label>
+        <span class="underline"></span>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Password">
+      </div>
 
       <fieldset style="display:none">
         <legend>Membership Status:</legend>
