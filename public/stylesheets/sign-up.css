@@ -33,6 +33,8 @@ input[type='text'] {
   overflow: hidden;
 }
 
-/* label {
-  width: 120px;
-} */
+.error {
+  padding: 10px;
+  font-size: 16px;
+  color: red;
+}
