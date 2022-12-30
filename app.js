@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
 const async = require('async');
 const { body, check, validationResult } = require('express-validator');
 
@@ -57,44 +58,37 @@ const create_user = [
 
   // Process request after validation
   (req, res, next) => {
-    const errors = validationResult(req);
+    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+      if (err) { return next(err) }
 
-    // if (req.body.password !== req.body.confirm_password) {
-    //   const message = "Passwords don't match";
-    //   res.render('./views/sign-up', {
-    //     resub: true,
-    //     first_name: req.body.first_name,
-    //     family_name: req.body.family_name,
-    //     username: req.body.username,
-    //     error: message,
-    //   })
-    // }
+      const errors = validationResult(req);
 
-    const member = new Member({
-      first_name: req.body.first_name,
-      family_name: req.body.family_name,
-      username: req.body.username,
-      password: req.body.password,
-      membership_status: false,
-    });
-
-    if (!errors.isEmpty()) {
-      res.render('./views/sign-up', {
-        resub: true,
+      const member = new Member({
         first_name: req.body.first_name,
         family_name: req.body.family_name,
         username: req.body.username,
-        errors: errors.array(),
+        password: hashedPassword,
+        membership_status: false,
       });
-      return;
-    }
 
-    member.save((err) => {
-      if (err) {
-        return next(err);
+      if (!errors.isEmpty()) {
+        res.render('./views/sign-up', {
+          resub: true,
+          first_name: req.body.first_name,
+          family_name: req.body.family_name,
+          username: req.body.username,
+          errors: errors.array(),
+        });
+        return;
       }
-      res.redirect('/');
-    })
+
+      member.save((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/');
+      });
+    });
   },
 ];
 
