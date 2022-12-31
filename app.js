@@ -64,7 +64,9 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 // Loads index
-app.get('/', (req, res) => res.render('./views/index'));
+app.get('/', (req, res) => {
+  res.render('./views/index', { member: req.user })
+});
 
 // Sign-up handling
 app.get('/sign-up', (req, res) => res.render('./views/sign-up'));
