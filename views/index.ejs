@@ -14,8 +14,8 @@
 
   <main>
     <h1>Members Only</h1>
-    <% if (typeof member !== 'undefined') {%> 
-      <p>Welcome back, <%= member.username %> </p>
+    <% if (currentUser) {%> 
+      <p>Welcome back, <%= currentUser.username %> </p>
       <a href="/log-out">LOG OUT</a>
     <% } %> 
   </main>

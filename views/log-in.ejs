@@ -13,16 +13,20 @@
   </header>
 
   <main>
-    <h1>Log In</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="Username">
+    <% if (currentUser) { %> 
+      <p>You're already logged in!</p>
+    <% } else { %> 
+      <h1>Log In</h1>
+      <form action="/log-in" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="Username">
 
-      <label for="password">Password</label>
-      <input type="password" name="password">
+        <label for="password">Password</label>
+        <input type="password" name="password">
 
-      <button type='submit'>Log In</button>
-    </form>
+        <button type='submit'>Log In</button>
+      </form>
+    <% } %> 
   </main>
 
   <footer>

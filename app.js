@@ -62,10 +62,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // Loads index
 app.get('/', (req, res) => {
-  res.render('./views/index', { member: req.user })
+  res.render('./views/index')
 });
 
 // Sign-up handling
