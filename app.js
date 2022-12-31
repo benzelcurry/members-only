@@ -79,4 +79,14 @@ app.post('/log-in', passport.authenticate('local', {
   failureRedirect: '/'
 }));
 
+// Log out handling
+app.get('/log-out', (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
 app.listen(3000, () => console.log('App listening on Port 3000!'));
