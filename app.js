@@ -93,4 +93,7 @@ app.get('/log-out', (req, res, next) => {
   });
 });
 
+// Membership acquisition handling
+app.get('/join', (req, res) => res.render('./views/join'));
+
 app.listen(3000, () => console.log('App listening on Port 3000!'));
