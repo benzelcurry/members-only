@@ -11,6 +11,7 @@ const { body, check, validationResult } = require('express-validator');
 
 require('dotenv').config();
 
+const Member = require('./models/member');
 const member_controller = require('./controllers/memberController');
 
 const mongoDB = process.env.MONGODB_URI;
@@ -21,6 +22,36 @@ db.on('error', console.error.bind(console, 'mongo connection error'));
 const app = express();
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
+
+passport.use(
+  new LocalStrategy((username, password, done) => {
+    Member.findOne({ username: username }, (err, member) => {
+      if (err) {
+        return done(err);
+      }
+      if (!member) {
+        return done(null, false, { message: 'Incorrect username' });
+      }
+      bcrypt.compare(password, member.password, (err, res) => {
+        if (res) {
+          return done(null, member)
+        } else {
+          return done(null, false, { message: 'Incorrect password' })
+        }
+      })
+    });
+  })
+);
+
+passport.serializeUser(function(member, done) {
+  done(null, member.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  Member.findById(id, function(err, member) {
+    done(err, member);
+  });
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -41,5 +72,9 @@ app.post('/sign-up', member_controller.create_user);
 
 // Log in handling
 app.get('/log-in', (req, res) => res.render('./views/log-in'));
+app.post('/log-in', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/'
+}));
 
 app.listen(3000, () => console.log('App listening on Port 3000!'));
