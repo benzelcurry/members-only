@@ -43,13 +43,13 @@ passport.use(
   })
 );
 
-passport.serializeUser(function(member, done) {
-  done(null, member.id);
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-  Member.findById(id, function(err, member) {
-    done(err, member);
+  Member.findById(id, function(err, user) {
+    done(err, user);
   });
 });
 
@@ -95,5 +95,9 @@ app.get('/log-out', (req, res, next) => {
 
 // Membership acquisition handling
 app.get('/join', (req, res) => res.render('./views/join'));
+app.post('/join', member_controller.update_user)
+
+// Displays success screen upon successful membership acquisition
+app.get('/success', (req, res) => res.render('./views/success'));
 
 app.listen(3000, () => console.log('App listening on Port 3000!'));

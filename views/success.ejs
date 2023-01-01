@@ -13,7 +13,11 @@
   </header>
 
   <main>
-    SUCCESS! You are now a member!
+    <% if (currentUser.membership_status) { %> 
+      <p>Congratulations <%= currentUser.username %>, you are now a member!</p> 
+    <% } else { %> 
+      <p>ACCESS DENIED.</p>
+    <% } %> 
   </main>
 
   <footer>

@@ -17,12 +17,28 @@
 
     <p>Know the secret passcode? Enter it now to gain member privileges.</p>
 
-    <form action="" method="POST">
+    <form action="/join" method="POST">
       <label for="passcode">Secret Passcode</label>
       <input type="password" name="passcode" id="passcode" placeholder="Secret Passcode">
 
+      <% if (currentUser) { %>  
+        <input type="password" name="id" id="id" value="<%= currentUser._id %>">
+      <% } %> 
+
       <button>Submit</button>
     </form>
+
+    <% if (typeof error !== 'undefined') { %>
+      <p>Error: 
+        <%= error %> 
+      </p>
+    <% } %> 
+
+    <% if (currentUser) { %> 
+      <p>
+        <%= currentUser.username %> 
+      </p>
+    <% } %> 
   </main>
 
   <footer>

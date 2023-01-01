@@ -3,6 +3,7 @@ const Member = require('../models/member');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+// Handles creating a new user on POST
 exports.create_user = [
   body('first_name', 'First name field must not be empty')
     .trim()
@@ -62,12 +63,20 @@ exports.create_user = [
   },
 ];
 
+// Handles updating a user on POST when membership is being acquired
 exports.update_user = (req, res, next) => {
   if (req.body.passcode !== 'PSEUDO') {
-    res.render('/views/join', {
+    res.render('./views/join', {
       error: 'INCORRECT PASSCODE',
     });
+    return;
   }
 
-  res
+  Member.findByIdAndUpdate(req.body.id, { membership_status: true }, (err) => {
+    if (err) {
+      return next(err);
+    }
+
+    res.redirect('/success');
+  });
 }
