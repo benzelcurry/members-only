@@ -61,3 +61,13 @@ exports.create_user = [
     });
   },
 ];
+
+exports.update_user = (req, res, next) => {
+  if (req.body.passcode !== 'PSEUDO') {
+    res.render('/views/join', {
+      error: 'INCORRECT PASSCODE',
+    });
+  }
+
+  res
+}
