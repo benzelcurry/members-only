@@ -1,7 +1,9 @@
 <nav>
   <a href="/">Home</a>
   <% if (currentUser) { %> 
-    <a href="/join">Join The Club</a>
+    <% if (!currentUser.membership_status) { %> 
+      <a href="/join">Join The Club</a>
+    <% } %>
     <a href="/log-out">Log Out</a>
   <% } else { %>   
     <a href="/sign-up">Sign-Up</a>

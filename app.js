@@ -80,7 +80,7 @@ app.post('/sign-up', member_controller.create_user);
 app.get('/log-in', (req, res) => res.render('./views/log-in'));
 app.post('/log-in', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/'
+  failureRedirect: '/log-in',
 }));
 
 // Log out handling
