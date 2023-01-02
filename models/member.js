@@ -7,6 +7,7 @@ const MemberSchema = new Schema({
   username: { type: String, required: true, maxLength: 30 },
   password: { type: String, required: true, maxLength: 100 },
   membership_status: { type: Boolean, required: true },
+  admin_status: { type: Boolean, required: true },
 });
 
 // Might add catalog routing; will need to change URL path if so

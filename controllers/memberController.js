@@ -40,6 +40,7 @@ exports.create_user = [
         username: req.body.username,
         password: hashedPassword,
         membership_status: false,
+        admin_status: false,
       });
 
       if (!errors.isEmpty()) {

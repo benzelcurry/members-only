@@ -4,6 +4,9 @@
     <% if (!currentUser.membership_status) { %> 
       <a href="/join">Join The Club</a>
     <% } %>
+    <% if (!currentUser.admin_status) { %>
+      <a href="/become-admin">Become An Admin</a>
+    <% } %>
     <a href="/log-out">Log Out</a>
   <% } else { %>   
     <a href="/sign-up">Sign-Up</a>

@@ -100,6 +100,9 @@ app.get('/log-out', (req, res, next) => {
 app.get('/join', (req, res) => res.render('./views/join'));
 app.post('/join', member_controller.update_user)
 
+// Admin acquisition handling
+app.get('/become-admin', (req, res) => res.render('./views/become-admin'));
+
 // Displays success screen upon successful membership acquisition
 app.get('/success', (req, res) => res.render('./views/success'));
 
