@@ -38,6 +38,6 @@ input[type='text'] {
   color: red;
 }
 
-#id {
+#id, #author {
   display: none;
 }

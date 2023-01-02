@@ -13,6 +13,7 @@ require('dotenv').config();
 
 const Member = require('./models/member');
 const member_controller = require('./controllers/memberController');
+const message_controller = require('./controllers/messageController');
 
 const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -102,5 +103,6 @@ app.get('/success', (req, res) => res.render('./views/success'));
 
 // Handles message creation
 app.get('/create-message', (req, res) => res.render('./views/create-message'));
+app.post('/create-message', message_controller.create_message);
 
 app.listen(3000, () => console.log('App listening on Port 3000!'));

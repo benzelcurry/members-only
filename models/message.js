@@ -6,7 +6,7 @@ const MessageSchema = new Schema({
   title: { type: String, required: true, maxLength: 100 },
   content: { type: String, required: true, maxLength: 1000 },
   date: { type: Date },
-  author: { type: Schema.Types.ObjectId, ref: 'Member', required: true },
+  author: { type: String, required: true },
 });
 
 // Might add catalog routing; will need to change URL path if so

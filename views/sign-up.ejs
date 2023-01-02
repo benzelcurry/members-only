@@ -26,14 +26,14 @@
         <label for="family_name">Family Name</label>
         <span class="underline"></span>
         <input type="text" name="family_name" id="family_name" placeholder="Family Name" 
-          value="<%= typeof resub != 'undefined' ? family_name : '' %>">
+          value="<%= typeof resub !== 'undefined' ? family_name : '' %>">
       </div>
 
       <div class="field">
         <label for="username">Username</label>
         <span class="underline"></span>
         <input type="text" name="username" id="username" placeholder="Username" 
-          value="<%= typeof resub != 'undefined' ? username : '' %>">
+          value="<%= typeof resub !== 'undefined' ? username : '' %>">
       </div>
 
       <div class="field">
