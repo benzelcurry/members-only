@@ -69,9 +69,11 @@ app.use(function(req, res, next) {
 });
 
 // Loads index
-app.get('/', (req, res) => {
-  res.render('./views/index')
-});
+// app.get('/', (req, res) => {
+//   res.render('./views/index')
+// });
+
+app.get('/', message_controller.display_messages);
 
 // Sign-up handling
 app.get('/sign-up', (req, res) => res.render('./views/sign-up'));

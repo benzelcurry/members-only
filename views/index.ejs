@@ -14,11 +14,20 @@
 
   <main>
     <h1>Members Only</h1>
-    <% if (currentUser) {%> 
+    <% if (currentUser) { %> 
       <p>Welcome back, <%= currentUser.username %> </p>
       <a href="/create-message">Create Message</a>
       <a href="/log-out">LOG OUT</a>
-    <% } %> 
+    <% } %>
+    
+    <% if (messageList) { %>
+      <% for (let i = 0; i < messageList.length; i++) { %>
+        <div>
+          <h4><%= messageList[i].title %></h4>
+          <p><%= messageList[i].content %></p>
+        </div>
+      <% } %>
+    <% } %>
   </main>
 
   <footer>

@@ -1,5 +1,4 @@
 const Message = require('../models/message');
-const Member = require('../models/member');
 
 const { body, validationResult } = require('express-validator');
 
@@ -47,3 +46,20 @@ exports.create_message = [
     });
   },
 ];
+
+// Displays messages on GET
+exports.display_messages = (req, res, next) => {
+  Message.find().exec((err, message_list) => {
+    if (err) {
+      return next(err);
+    }
+
+    if (!message_list) {
+      res.render('./views/index');
+    }
+
+    res.render('./views/index', {
+      messageList: message_list,
+    });
+  });
+}
