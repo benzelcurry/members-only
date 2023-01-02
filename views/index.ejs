@@ -24,6 +24,10 @@
       <% for (let i = 0; i < messageList.length; i++) { %>
         <div>
           <h4><%= messageList[i].title %></h4>
+          <% if (currentUser) { %>
+            <h5><%= messageList[i].author %></h5>
+            <h5><%= messageList[i].date_formatted %></h5>
+          <% } %>
           <p><%= messageList[i].content %></p>
         </div>
       <% } %>
