@@ -98,10 +98,11 @@ app.get('/log-out', (req, res, next) => {
 
 // Membership acquisition handling
 app.get('/join', (req, res) => res.render('./views/join'));
-app.post('/join', member_controller.update_user)
+app.post('/join', member_controller.update_user);
 
 // Admin acquisition handling
 app.get('/become-admin', (req, res) => res.render('./views/become-admin'));
+app.post('/become-admin', member_controller.become_admin);
 
 // Displays success screen upon successful membership/adminship acquisition
 app.get('/success', (req, res) => res.render('./views/success'));

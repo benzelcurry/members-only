@@ -84,7 +84,7 @@ exports.update_user = (req, res, next) => {
 
 // Handles addition of admin status on POST
 exports.become_admin = (req, res, next) => {
-  if (req.bopdy.passcode !== 'ADMIN') {
+  if (req.body.passcode !== 'ADMIN') {
     res.render('./views/become-admin', {
       error: 'INCORRECT PASSCODE',
     });
