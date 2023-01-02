@@ -114,4 +114,4 @@ app.post('/create-message', message_controller.create_message);
 // Handles message deletion
 app.post('/delete-message', message_controller.delete_message);
 
-app.listen(3000, () => console.log('App listening on Port 3000!'));
+app.listen(process.env.PORT, () => console.log('Listening...'));
