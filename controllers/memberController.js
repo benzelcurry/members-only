@@ -81,3 +81,15 @@ exports.update_user = (req, res, next) => {
     res.redirect('/success');
   });
 }
+
+// Handles addition of admin status on POST
+exports.become_admin = (req, res, next) => {
+  if (req.bopdy.passcode !== 'ADMIN') {
+    res.render('./views/become-admin', {
+      error: 'INCORRECT PASSCODE',
+    });
+    return;
+  }
+
+  Member.findByIdAndUpdate(req.body.id)
+}
