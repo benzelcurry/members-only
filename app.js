@@ -6,6 +6,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
+const compression = require('compression');
+const helmet = require('helmet');
 const async = require('async');
 const { body, check, validationResult } = require('express-validator');
 
@@ -54,6 +56,8 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+app.use(helmet());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'cats',
@@ -67,11 +71,6 @@ app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
-
-// Loads index
-// app.get('/', (req, res) => {
-//   res.render('./views/index')
-// });
 
 app.get('/', message_controller.display_messages);
 
