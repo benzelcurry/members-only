@@ -92,6 +92,7 @@ textarea {
 footer {
   height: 75px;
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   background-color: rgb(193, 225, 243);

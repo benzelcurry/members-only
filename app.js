@@ -78,6 +78,9 @@ app.get('/', message_controller.display_messages);
 app.get('/sign-up', (req, res) => res.render('./views/sign-up'));
 app.post('/sign-up', member_controller.create_user);
 
+// New user welcome handling
+app.get('/welcome', (req, res) => res.render('./views/welcome'));
+
 // Log in handling
 app.get('/log-in', (req, res) => res.render('./views/log-in'));
 app.post('/log-in', passport.authenticate('local', {
