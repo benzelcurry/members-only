@@ -112,4 +112,7 @@ app.get('/admin-success', (req, res) => res.render('./views/admin-success'));
 app.get('/create-message', (req, res) => res.render('./views/create-message'));
 app.post('/create-message', message_controller.create_message);
 
+// Handles message deletion
+app.post('/delete-message', message_controller.delete_message);
+
 app.listen(3000, () => console.log('App listening on Port 3000!'));

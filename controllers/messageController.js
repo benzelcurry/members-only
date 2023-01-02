@@ -65,3 +65,14 @@ exports.display_messages = (req, res, next) => {
       });
     });
 }
+
+// Delete messages on POST
+exports.delete_message = (req, res, next) => {
+  Message.findByIdAndRemove(req.body.messageID, (err) => {
+    if (err) {
+      return next(err);
+    }
+
+    res.redirect('/');
+  });
+};

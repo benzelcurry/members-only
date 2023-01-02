@@ -29,6 +29,12 @@
             <h5><%= messageList[i].date_formatted %></h5>
           <% } %>
           <p><%= messageList[i].content %></p>
+          <% if (currentUser && currentUser.admin_status) { %>
+            <form action="/delete-message" method="POST">
+              <input type="password" id="messageID" name="messageID" value="<%= messageList[i]._id %>">
+              <button>Delete Message</button>
+            </form>
+          <% } %>
         </div>
       <% } %>
     <% } %>
