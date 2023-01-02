@@ -16,23 +16,24 @@
     <h1>Members Only</h1>
     <% if (currentUser) { %> 
       <p>Welcome back, <%= currentUser.username %> </p>
-      <a href="/create-message">Create Message</a>
-      <a href="/log-out">LOG OUT</a>
+      <a href="/create-message"><button class="create-msg">Create Message</button></a>
     <% } %>
     
     <% if (messageList) { %>
       <% for (let i = 0; i < messageList.length; i++) { %>
-        <div>
-          <h4><%= messageList[i].title %></h4>
-          <% if (currentUser) { %>
-            <h5><%= messageList[i].author %></h5>
-            <h5><%= messageList[i].date_formatted %></h5>
-          <% } %>
+        <div class="user-message">
+          <div class="message-info">
+            <h4><%= messageList[i].title %></h4>
+            <% if (currentUser) { %>
+              <h5>- <%= messageList[i].author %>,</h5>
+              <h5><%= messageList[i].date_formatted %></h5>
+            <% } %>
+          </div>
           <p><%= messageList[i].content %></p>
           <% if (currentUser && currentUser.admin_status) { %>
-            <form action="/delete-message" method="POST">
+            <form class='delete-msg' action="/delete-message" method="POST">
               <input type="password" id="messageID" name="messageID" value="<%= messageList[i]._id %>">
-              <button>Delete Message</button>
+              <button class="delete-btn">Delete Message</button>
             </form>
           <% } %>
         </div>

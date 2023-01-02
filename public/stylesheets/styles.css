@@ -1,3 +1,102 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+header {
+  height: 75px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(193, 225, 243);
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+nav > a:hover {
+  color: rgb(112, 110, 110);
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.create-msg {
+  background-color: rgb(193, 225, 243);
+  border: solid 2px black;
+  border-radius: 10px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.user-message {
+  width: 400px;
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.message-info {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-msg {
+  display: flex;
+  justify-content: end;
+}
+
+.delete-btn {
+  border: solid 2px black;
+  background-color: rgb(228, 146, 146);
+  border-radius: 10px;
+  height: 30px;
+}
+
+.create-messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.create-messages > button {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 200px;
+  word-wrap: break-word;
+}
+
+footer {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(193, 225, 243);
+}
+
 .sign-up {
   display: flex;
   flex-direction: column;
