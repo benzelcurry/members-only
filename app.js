@@ -100,4 +100,7 @@ app.post('/join', member_controller.update_user)
 // Displays success screen upon successful membership acquisition
 app.get('/success', (req, res) => res.render('./views/success'));
 
+// Handles message creation
+app.get('/create-message', (req, res) => res.render('./views/create-message'));
+
 app.listen(3000, () => console.log('App listening on Port 3000!'));

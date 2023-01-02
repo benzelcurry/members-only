@@ -9,20 +9,15 @@
 </head>
 <body>
   <header>
-    <%- include('../partials/header') %>
+    <%- include ('../partials/header') %> 
   </header>
 
   <main>
-    <h1>Members Only</h1>
-    <% if (currentUser) {%> 
-      <p>Welcome back, <%= currentUser.username %> </p>
-      <a href="/create-message">Create Message</a>
-      <a href="/log-out">LOG OUT</a>
-    <% } %> 
+    Create Message content will go here.
   </main>
 
   <footer>
-    <%- include('../partials/footer') %> 
+    <%- include ('../partials/footer') %> 
   </footer>
 </body>
 </html>
