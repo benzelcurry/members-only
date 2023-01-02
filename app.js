@@ -103,8 +103,9 @@ app.post('/join', member_controller.update_user)
 // Admin acquisition handling
 app.get('/become-admin', (req, res) => res.render('./views/become-admin'));
 
-// Displays success screen upon successful membership acquisition
+// Displays success screen upon successful membership/adminship acquisition
 app.get('/success', (req, res) => res.render('./views/success'));
+app.get('/admin-success', (req, res) => res.render('./views/admin-success'));
 
 // Handles message creation
 app.get('/create-message', (req, res) => res.render('./views/create-message'));

@@ -91,5 +91,11 @@ exports.become_admin = (req, res, next) => {
     return;
   }
 
-  Member.findByIdAndUpdate(req.body.id)
+  Member.findByIdAndUpdate(req.body.id, { admin_status: true }, (err) => {
+    if (err) {
+      return next(err);
+    }
+
+    res.redirect('/admin-success');
+  });
 }
