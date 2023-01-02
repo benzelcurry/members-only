@@ -17,7 +17,7 @@ const Member = require('./models/member');
 const member_controller = require('./controllers/memberController');
 const message_controller = require('./controllers/messageController');
 
-const mongoDB = process.env.MONGODB_URI;
+const mongoDB = MONGODB_URI;
 mongoose.connect(mongoDB, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));
