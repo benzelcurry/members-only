@@ -1,6 +1,6 @@
 # Members Only
 
-Link to app: members-only-production-95b7.up.railway.app
+Link to app: https://members-only-production-95b7.up.railway.app
 
 Full stack project used to demonstrate authentication skills and techniques.
 Secret passcodes to gain additional privileges after account creation:
