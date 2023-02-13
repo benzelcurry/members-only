@@ -21,7 +21,3 @@ Secret passcodes to gain additional privileges after account creation:
 * Create messages
 * Delete messages (if admin)
 * View messages posted by other users
-
-Secret passcodes to gain additional privileges after account creation:
-  * Membership privileges: PSEUDO
-  * Administrator privileges: ADMIN
